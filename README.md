@@ -1,2 +1,1 @@
-# opencv
-Basic OpenCV programs in Python
+## OpenCV Examples
