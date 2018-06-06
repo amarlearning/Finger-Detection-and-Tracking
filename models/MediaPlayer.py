@@ -14,14 +14,12 @@ def main():
     capture = cv2.VideoCapture(videoFilePath)
     cv2.createTrackbar('FrameSpeed', windowname, 10, 60, passFunction)
 
-    while capture.isOpened():
+    while (capture.isOpened()):
 
         FrameSpeed = cv2.getTrackbarPos('FrameSpeed', windowname)
+        flag, frame = capture.read()
 
         if FrameSpeed <= 0: FrameSpeed = 1
-
-        if capture.isOpened():
-            flag, frame = capture.read()
 
         if flag:
             cv2.imshow(windowname, frame)
