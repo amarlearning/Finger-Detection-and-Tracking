@@ -18,7 +18,6 @@ def main():
     titles = ["Default RGB Image", "Only Red", "Only Blue", "Only Green"]    
     cmaps = ["gray", "Reds", "Greens", "Blues"]    
     
-    
     for i in range(4):    
     
         plt.subplot(2, 2, i + 1)

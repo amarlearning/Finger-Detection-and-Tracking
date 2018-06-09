@@ -12,7 +12,7 @@ def main():
     videoFilePath = "/media/amarpandey/Media Files/Movies/Game Of Thrones/Season Seven/Game.of.Thrones.S07E03.720p.WEB.h264-TBS[eztv].mkv"
 
     capture = cv2.VideoCapture(videoFilePath)
-    cv2.createTrackbar('FrameSpeed', windowname, 10, 60, passFunction)
+    cv2.createTrackbar('FrameSpeed', windowname, 10, 600, passFunction)
 
     while (capture.isOpened()):
 

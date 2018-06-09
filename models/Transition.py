@@ -1,27 +1,33 @@
 import cv2
-import time
-import numpy as np
 
+
+def passFunction(x):
+    pass
 
 def main():
 
+    windowName = "Transition Effect"
     basePath = "/home/amarpandey/PycharmProjects/OpenCV/data/"
 
-    imageOneName = basePath + "4.1.05.tiff"
-    imageTwoName = basePath + "4.1.06.tiff"
+    imageOneName = basePath + "lena_color_512.tif"
+    imageTwoName = basePath + "mandril_color.tif"
+
+    cv2.namedWindow("Transition Effect")
 
     imageOne = cv2.imread(imageOneName, 1)
     imageTwo = cv2.imread(imageTwoName, 1)
 
-    imageOne = cv2.cvtColor(imageOne, cv2.COLOR_BGR2RGB)
-    imageTwo = cv2.cvtColor(imageTwo, cv2.COLOR_BGR2RGB)
+    cv2.createTrackbar("Alpha", windowName, 0, 1000, passFunction)
 
-    for i in np.linspace(0, 1, 100):
-        alpha = i
+    while True:
+
+        alpha = cv2.getTrackbarPos("Alpha", windowName) / 1000
         beta = 1 - alpha
+
         output = cv2.addWeighted(imageOne, alpha, imageTwo, beta, 0)
-        cv2.imshow("Transition", output)
-        time.sleep(0.05)
+
+        cv2.imshow(windowName, output)
+
         if cv2.waitKey(1) == 27:
             break
 

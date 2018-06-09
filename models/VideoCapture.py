@@ -10,7 +10,7 @@ def main():
     cv2.namedWindow(window_name)
     capture = cv2.VideoCapture(0)
 
-    codec = cv2.VideoWriter_fourcc('X', 'V', 'I', 'D')
+    codec = cv2.VideoWriter_fourcc('W', 'M', 'V', '2')
 
     videoCapture = cv2.VideoWriter(videoCapturePath, codec, framerate, resolution)
 
