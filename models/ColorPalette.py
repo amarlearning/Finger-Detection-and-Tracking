@@ -1,7 +1,6 @@
 import cv2
 import numpy as np
 
-
 def passFunction(x):
     pass
 

@@ -1,9 +1,7 @@
 import cv2
 
-
 def passFunction(x):
     pass
-
 
 def main():
     windowname = "OpenCV Media Player"

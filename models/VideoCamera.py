@@ -8,8 +8,8 @@ def main():
 
     capture = cv2.VideoCapture(0)
 
-    capture.set(cv2.CAP_PROP_FRAME_WIDTH, 5000)
-    capture.set(cv2.CAP_PROP_FRAME_HEIGHT, 5000)
+    capture.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
+    capture.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
 
     if capture.isOpened():
         flag, frame = capture.read()

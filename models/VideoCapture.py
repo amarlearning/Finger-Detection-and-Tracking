@@ -1,6 +1,5 @@
 import cv2
 
-
 def main():
     framerate = 30
     resolution = (640, 480)

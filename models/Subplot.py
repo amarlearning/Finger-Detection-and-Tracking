@@ -1,7 +1,6 @@
 import cv2
 import matplotlib.pyplot as plt
 
-
 def main():
 
     basePath = "/home/amarpandey/PycharmProjects/OpenCV/data/"

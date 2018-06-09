@@ -3,6 +3,7 @@ import numpy as np
 
 
 def main():
+    
     # Blue Color Object Range
     # low = np.array([100, 70, 50])
     # high = np.array([140, 255, 255])
@@ -22,7 +23,7 @@ def main():
     capture = cv2.VideoCapture(0)
 
     if capture.isOpened():
-        flag, frame = capture.read()
+        flag, frameBGR = capture.read()
     else:
         flag = False
 
