@@ -1,16 +1,13 @@
 import cv2
 import numpy as np
 
-
 mode = True
 xi, yi = -1, -1  # type: (int, int)
 drawing  = False
 
-
 windowName = "Drawing Shapes"
 image = np.zeros((512, 800, 3), np.uint8)
 cv2.namedWindow(windowName)
-
 
 def drawShape(event, x, y, flags, params):
 
@@ -34,9 +31,7 @@ def drawShape(event, x, y, flags, params):
         else:
             cv2.circle(image, (x, y), 5, (255, 0, 0), -1)
 
-
 cv2.setMouseCallback(windowName, drawShape)
-
 
 def main():
 
