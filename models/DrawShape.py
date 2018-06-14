@@ -3,14 +3,14 @@ import numpy as np
 
 mode = True
 xi, yi = -1, -1  # type: (int, int)
-drawing  = False
+drawing = False
 
 windowName = "Drawing Shapes"
 image = np.zeros((512, 800, 3), np.uint8)
 cv2.namedWindow(windowName)
 
-def drawShape(event, x, y, flags, params):
 
+def drawShape(event, x, y, flags, params):
     global mode, drawing, xi, yi
 
     if event == cv2.EVENT_LBUTTONDOWN:
@@ -33,17 +33,17 @@ def drawShape(event, x, y, flags, params):
 
 cv2.setMouseCallback(windowName, drawShape)
 
-def main():
 
+def main():
     global mode
 
     while True:
         preseedKey = cv2.waitKey(1)
         cv2.imshow(windowName, image)
 
-        if preseedKey == ord('m') or preseedKey == ord('M'):
+        if preseedKey & 0xFF == ord('m') or preseedKey & 0xFF == ord('M'):
             mode = not mode
-        elif preseedKey == 27:
+        elif preseedKey & 0xFF == 27:
             break
 
     cv2.destroyWindow(windowName)

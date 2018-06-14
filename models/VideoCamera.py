@@ -2,7 +2,6 @@ import cv2
 
 
 def main():
-
     window_name = "Live Video Feed"
     cv2.namedWindow(window_name)
 
@@ -21,7 +20,7 @@ def main():
         flag, frame = capture.read()
 
         cv2.imshow(window_name, frame)
-        if cv2.waitKey(1) == 27:
+        if cv2.waitKey(1) & 0xFF == 27:
             break
 
     cv2.destroyWindow(window_name)

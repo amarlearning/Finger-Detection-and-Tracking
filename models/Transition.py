@@ -4,10 +4,10 @@ import cv2
 def passFunction(x):
     pass
 
-def main():
 
+def main():
+    basePath = "../data/"
     windowName = "Transition Effect"
-    basePath = "/home/amarpandey/PycharmProjects/OpenCV/data/"
 
     imageOneName = basePath + "lena_color_512.tif"
     imageTwoName = basePath + "mandril_color.tif"
@@ -28,7 +28,7 @@ def main():
 
         cv2.imshow(windowName, output)
 
-        if cv2.waitKey(1) == 27:
+        if cv2.waitKey(1) & 0xFF == 27:
             break
 
     cv2.destroyAllWindows()

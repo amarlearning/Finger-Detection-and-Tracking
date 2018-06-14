@@ -1,9 +1,9 @@
 import cv2
 import matplotlib.pyplot as plt
 
-def main():
 
-    basePath = "/home/amarpandey/PycharmProjects/OpenCV/data/"
+def main():
+    basePath = "../data/"
 
     imageOneName = basePath + "4.1.01.tiff"
     imageTwoName = basePath + "4.1.02.tiff"

@@ -3,7 +3,6 @@ import numpy as np
 
 
 def main():
-    
     # Blue Color Object Range
     # low = np.array([100, 70, 50])
     # high = np.array([140, 255, 255])
@@ -39,7 +38,7 @@ def main():
         cv2.imshow(windowMasked, maskedFrame)
         cv2.imshow(windowOrignal, frameBGR)
 
-        if cv2.waitKey(1) == 27:
+        if cv2.waitKey(1) & 0xFF == 27:
             break
 
     cv2.destroyAllWindows()

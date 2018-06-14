@@ -1,10 +1,11 @@
 import cv2
 
+
 def main():
     framerate = 30
     resolution = (640, 480)
     window_name = "Live Video Feed"
-    videoCapturePath = "/home/amarpandey/PycharmProjects/OpenCV/Output/Output.avi"
+    videoCapturePath = "../Output/Output.avi"
 
     cv2.namedWindow(window_name)
     capture = cv2.VideoCapture(0)
@@ -23,7 +24,7 @@ def main():
         flag, frame = capture.read()
         videoCapture.write(frame)
         cv2.imshow(window_name, frame)
-        if cv2.waitKey(1) == 27:
+        if cv2.waitKey(1) & 0xFF == 27:
             break
 
     cv2.destroyWindow(window_name)

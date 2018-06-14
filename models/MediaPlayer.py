@@ -1,7 +1,9 @@
 import cv2
 
+
 def passFunction(x):
     pass
+
 
 def main():
     windowname = "OpenCV Media Player"
@@ -21,7 +23,7 @@ def main():
 
         if flag:
             cv2.imshow(windowname, frame)
-            if cv2.waitKey(FrameSpeed) == 27:  # because 33 * FPS == 1 second
+            if cv2.waitKey(FrameSpeed) & 0xFF == 27:  # because 33 * FPS == 1 second
                 break
         else:
             break
