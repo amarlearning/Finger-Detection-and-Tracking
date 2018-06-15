@@ -4,16 +4,16 @@ import numpy as np
 
 def main():
     # Blue Color Object Range
-    # low = np.array([100, 70, 50])
-    # high = np.array([140, 255, 255])
+    blue_low = np.array([110, 100, 100])
+    blue_high = np.array([130, 255, 255])
 
     # Green Color Object Range
-    low = np.array([40, 50, 50])
-    high = np.array([80, 255, 255])
+    green_low = np.array([50, 100, 100])
+    green_high = np.array([70, 255, 255])
 
     # Red Color Object Range
-    # low = np.array([140, 150, 0])
-    # high = np.array([180, 255, 255])
+    red_low = np.array([0, 100, 100])
+    red_high = np.array([10, 255, 255])
 
     windowOrignal = "Orignal Live Feed"
     windowMasked = "Masked Window Feed"
@@ -22,21 +22,26 @@ def main():
     capture = cv2.VideoCapture(0)
 
     if capture.isOpened():
-        flag, frameBGR = capture.read()
+        flag, frame_bgr = capture.read()
     else:
         flag = False
 
     while flag:
 
-        flag, frameBGR = capture.read()
+        flag, frame_bgr = capture.read()
 
-        frameHSV = cv2.cvtColor(frameBGR, cv2.COLOR_BGR2HSV)
-        maskedFrame = cv2.inRange(frameHSV, low, high)
-        BitwiseFrame = cv2.bitwise_and(frameBGR, frameBGR, mask=maskedFrame)
+        frame_hsv = cv2.cvtColor(frame_bgr, cv2.COLOR_BGR2HSV)
 
-        cv2.imshow(windowColorObject, BitwiseFrame)
-        cv2.imshow(windowMasked, maskedFrame)
-        cv2.imshow(windowOrignal, frameBGR)
+        masker_red = cv2.inRange(frame_hsv, red_low, red_high)
+        masked_green = cv2.inRange(frame_hsv, green_low, green_high)
+
+        red_green_masked = cv2.bitwise_or(masker_red, masked_green)
+
+        target = cv2.bitwise_and(frame_bgr, frame_bgr, mask=red_green_masked)
+
+        cv2.imshow(windowColorObject, target)
+        cv2.imshow(windowMasked, red_green_masked)
+        cv2.imshow(windowOrignal, frame_bgr)
 
         if cv2.waitKey(1) & 0xFF == 27:
             break
