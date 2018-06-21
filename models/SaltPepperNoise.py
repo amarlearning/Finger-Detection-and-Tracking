@@ -21,11 +21,19 @@ def main():
             elif rand < probability:
                 # salt noise
                 imagergb[i][j] = [255, 255, 255]
-            else:
-                pass
 
+    # Median filter to remove noise from image
+    median_filter = cv2.medianBlur(imagebgr, 5)
+    median_filter = cv2.cvtColor(median_filter, cv2.COLOR_BGR2RGB)
+
+    plt.subplot(1, 2, 1)
     plt.imshow(imagergb)
     plt.title("Salt and Pepper Noise Image")
+
+    plt.subplot(1, 2, 2)
+    plt.imshow(median_filter)
+    plt.title("Median Filter De-Noising (Salt and Pepper)")
+
     plt.show()
 
 
