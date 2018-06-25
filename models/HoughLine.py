@@ -8,6 +8,8 @@ def main():
         ret, frame = capture.read()
 
         gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+
+        # edges_detec = cv2.Canny(gray_frame, 100, 200, apertureSize=3)
         edges_detec = cv2.Canny(gray_frame, 100, 200, apertureSize=3, L2gradient=True)
 
         cv2.imshow("Capture Frame", edges_detec)
