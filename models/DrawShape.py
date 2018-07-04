@@ -31,6 +31,7 @@ def drawShape(event, x, y, flags, params):
         else:
             cv2.circle(image, (x, y), 5, (255, 0, 0), -1)
 
+
 cv2.setMouseCallback(windowName, drawShape)
 
 

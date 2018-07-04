@@ -3,10 +3,7 @@ import matplotlib.pyplot as plt
 
 
 def main():
-    basePath = "../data/"
-    imagePathOne = basePath + "house.tiff"
-
-    imageOne = cv2.imread(imagePathOne, 1)
+    imageOne = cv2.imread("../data/house.tiff", 1)
     imageOne = cv2.cvtColor(imageOne, cv2.COLOR_BGR2RGB)
 
     red, green, blue = cv2.split(imageOne)

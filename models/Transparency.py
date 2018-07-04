@@ -1,5 +1,6 @@
 import cv2
 
+
 def main():
     image = cv2.imread("../data/house.tiff", 1)
 

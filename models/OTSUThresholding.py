@@ -5,10 +5,8 @@ import matplotlib.pyplot as plt
 def main():
     threshold = 0
     max_value = 255
-    basePath = "../data/"
-    imagePath = basePath + "7.1.08.tiff"
 
-    image = cv2.imread(imagePath, 0)
+    image = cv2.imread("../data/7.1.08.tiff", 0)
 
     # when applying OTSU threshold, set threshold to 0.
 

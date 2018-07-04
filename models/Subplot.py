@@ -3,13 +3,8 @@ import matplotlib.pyplot as plt
 
 
 def main():
-    basePath = "../data/"
-
-    imageOneName = basePath + "4.1.01.tiff"
-    imageTwoName = basePath + "4.1.02.tiff"
-
-    imageOne = cv2.imread(imageOneName, 1)
-    imageTwo = cv2.imread(imageTwoName, 1)
+    imageOne = cv2.imread("../data/4.1.01.tiff", 1)
+    imageTwo = cv2.imread("../data/4.1.02.tiff", 1)
 
     imageNames = [imageOne, imageTwo]
     imageTitles = ["First Image", "Second Image"]

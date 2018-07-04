@@ -6,16 +6,12 @@ def passFunction(x):
 
 
 def main():
-    basePath = "../data/"
     windowName = "Transition Effect"
-
-    imageOneName = basePath + "lena_color_512.tif"
-    imageTwoName = basePath + "mandril_color.tif"
 
     cv2.namedWindow("Transition Effect")
 
-    imageOne = cv2.imread(imageOneName, 1)
-    imageTwo = cv2.imread(imageTwoName, 1)
+    imageOne = cv2.imread("../data/lena_color_512.tif", 1)
+    imageTwo = cv2.imread("../data/mandril_color.tif", 1)
 
     cv2.createTrackbar("Alpha", windowName, 0, 1000, passFunction)
 

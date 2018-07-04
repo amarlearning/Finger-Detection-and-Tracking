@@ -2,9 +2,6 @@ import cv2
 
 
 def main():
-    basePath = "../data/"
-    imagePathOne = basePath + "house.tiff"
-
     capture = cv2.VideoCapture(0)
 
     if capture.isOpened():

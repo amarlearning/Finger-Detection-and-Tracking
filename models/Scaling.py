@@ -2,9 +2,7 @@ import cv2
 
 
 def main():
-    imagePath = "../data/4.1.04.tiff"
-
-    imageOne = cv2.imread(imagePath, 1)
+    imageOne = cv2.imread("../data/4.1.04.tiff", 1)
 
     areaInter = cv2.resize(imageOne, None, fx=3, fy=3, interpolation=cv2.INTER_AREA)
     cubicInter = cv2.resize(imageOne, None, fx=3, fy=3, interpolation=cv2.INTER_CUBIC)
