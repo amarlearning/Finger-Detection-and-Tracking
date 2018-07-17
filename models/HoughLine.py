@@ -10,7 +10,7 @@ def main():
 
         gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
-        edges_detec = cv2.Canny(gray_frame, 50, 250, apertureSize=3, L2gradient=True)
+        edges_detec = cv2.Canny(gray_frame, 50, 250, apertureSize=5, L2gradient=True)
 
         hough_lines = cv2.HoughLines(edges_detec, 1, np.pi / 180, 200)
 
