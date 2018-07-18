@@ -14,8 +14,8 @@ def main():
 
         gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
-        eyes = eye_cascade.detectMultiScale(gray_frame, scaleFactor=1.10, minNeighbors=5, minSize=(10,10))
-        faces = face_cascade.detectMultiScale(gray_frame, scaleFactor=1.15, minNeighbors=5, minSize=(40, 40))
+        eyes = eye_cascade.detectMultiScale(gray_frame, scaleFactor=1.20, minNeighbors=5, minSize=(10,10))
+        faces = face_cascade.detectMultiScale(gray_frame, scaleFactor=1.20, minNeighbors=5, minSize=(40, 40))
 
         print("Number of eyes : " + str(len(eyes)))
         print("Number of faces : " + str(len(faces)))
