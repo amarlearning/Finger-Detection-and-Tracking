@@ -1,16 +1,37 @@
 import cv2
-import numpy as np
 import matplotlib.pyplot as plt
+import numpy as np
 
-image = cv2.imread("../data/4.1.03.tiff", 0)
 
-plt.subplot(2, 1, 1)
-plt.imshow(image, cmap="gray")
-plt.title("Orignal Image")
+def main():
+    image = cv2.imread("../data/4.1.03.tiff", 1)
+    image_rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
-plt.subplot(2, 1, 2)
-plt.hist(image.ravel(), 256, [0, 255])
-plt.xlim([0, 255])
-plt.title("Image Histogram")
+    red_hist = cv2.calcHist([image_rgb], [0], None, [256], [0, 255])
+    green_hist = cv2.calcHist([image_rgb], [1], None, [256], [0, 255])
+    blue_hist = cv2.calcHist([image_rgb], [2], None, [256], [0, 255])
 
-plt.show()
+    # Histogram using Matplotlib
+    plt.subplot(3, 1, 1)
+    plt.hist(image.ravel(), 256, [0, 255])
+    plt.xlim([0, 255])
+    plt.title("Image Histogram using Matplotlib")
+
+    # Histogram using Numpy
+    plt.subplot(3, 1, 2)
+    histogram, bins = np.histogram(image.ravel(), 256, [0, 255])
+    plt.plot(histogram, color='r')
+    plt.xlim([0, 255])
+    plt.title("Image Histogram using Numpy")
+
+    # Histogram using Numpy
+    plt.subplot(3, 1, 3)
+    plt.plot(red_hist, color='r')
+    plt.xlim([0, 255])
+    plt.title("Image Histogram using OpenCV")
+
+    plt.show()
+
+
+if __name__ == '__main__':
+    main()
