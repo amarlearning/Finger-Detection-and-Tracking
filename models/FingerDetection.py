@@ -2,6 +2,7 @@ import cv2
 import numpy as np
 
 hand_hist = None
+traverse_point = []
 total_rectangle = 9
 hand_rect_one_x = None
 hand_rect_one_y = None
@@ -10,7 +11,7 @@ hand_rect_two_x = None
 hand_rect_two_y = None
 
 
-def rescale_frame(frame, wpercent=100, hpercent=100):
+def rescale_frame(frame, wpercent=130, hpercent=130):
     width = int(frame.shape[1] * wpercent / 100)
     height = int(frame.shape[0] * hpercent / 100)
     return cv2.resize(frame, (width, height), interpolation=cv2.INTER_AREA)
@@ -85,30 +86,72 @@ def hist_masking(frame, hist):
 
     ret, thresh = cv2.threshold(dst, 150, 255, cv2.THRESH_BINARY)
 
-    cv2.imshow("normal thresh", thresh)
+    # thresh = cv2.dilate(thresh, None, iterations=5)
 
     thresh = cv2.merge((thresh, thresh, thresh))
 
-    cv2.GaussianBlur(dst, (5, 5), 0, dst)
-
     return cv2.bitwise_and(frame, thresh)
+
+
+def centroid(max_contour):
+    moment = cv2.moments(max_contour)
+    if moment['m00'] != 0:
+        cx = int(moment['m10'] / moment['m00'])
+        cy = int(moment['m01'] / moment['m00'])
+        return cx, cy
+    else:
+        return None
+
+
+def farthest_point(defects, contour, centroid):
+    if defects is not None and centroid is not None:
+        s = defects[:, 0][:, 0]
+        cx, cy = centroid
+
+        x = np.array(contour[s][:, 0][:, 0], dtype=np.float)
+        y = np.array(contour[s][:, 0][:, 1], dtype=np.float)
+
+        xp = cv2.pow(cv2.subtract(x, cx), 2)
+        yp = cv2.pow(cv2.subtract(y, cy), 2)
+        dist = cv2.sqrt(cv2.add(xp, yp))
+
+        dist_max_i = np.argmax(dist)
+
+        if dist_max_i < len(s):
+            farthest_defect = s[dist_max_i]
+            farthest_point = tuple(contour[farthest_defect][0])
+            return farthest_point
+        else:
+            return None
+
+
+def draw_circles(frame, traverse_point):
+    if traverse_point is not None:
+        for i in range(len(traverse_point)):
+            cv2.circle(frame, traverse_point[i], int(5 - (5 * i * 3) / 100), [0, 255, 255], -1)
 
 
 def manage_image_opr(frame, hand_hist):
     hist_mask_image = hist_masking(frame, hand_hist)
     contour_list = contours(hist_mask_image)
     max_cont = max_contour(contour_list)
-    hull = cv2.convexHull(max_cont, returnPoints=False)
-    defects = cv2.convexityDefects(max_cont, hull)
 
-    if defects is not None:
-        for i in range(defects.shape[0]):
-            s, e, f, d = defects[i, 0]
-            start = tuple(max_cont[s][0])
-            end = tuple(max_cont[e][0])
-            far = tuple(max_cont[f][0])
-            cv2.line(frame, start, end, [0, 255, 0], 2)
-            cv2.circle(frame, far, 5, [0, 0, 255], -1)
+    cnt_centroid = centroid(max_cont)
+    cv2.circle(frame, cnt_centroid, 5, [255, 0, 255], -1)
+
+    if max_cont is not None:
+        hull = cv2.convexHull(max_cont, returnPoints=False)
+        defects = cv2.convexityDefects(max_cont, hull)
+        far_point = farthest_point(defects, max_cont, cnt_centroid)
+        print("Centroid : " + str(cnt_centroid) + ", farthest Point : " + str(far_point))
+        cv2.circle(frame, far_point, 5, [0, 0, 255], -1)
+        if len(traverse_point) < 20:
+            traverse_point.append(far_point)
+        else:
+            traverse_point.pop(0)
+            traverse_point.append(far_point)
+
+        draw_circles(frame, traverse_point)
 
 
 def main():
@@ -120,8 +163,6 @@ def main():
         pressed_key = cv2.waitKey(1)
         _, frame = capture.read()
 
-        frame = rescale_frame(frame)
-
         if pressed_key & 0xFF == ord('z'):
             is_hand_hist_created = True
             hand_hist = hand_histogram(frame)
@@ -132,7 +173,7 @@ def main():
         else:
             frame = draw_rect(frame)
 
-        cv2.imshow("Live Feed", frame)
+        cv2.imshow("Live Feed", rescale_frame(frame))
 
         if pressed_key == 27:
             break
