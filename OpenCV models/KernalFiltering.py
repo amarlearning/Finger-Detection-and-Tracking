@@ -9,10 +9,9 @@ def main():
     # Kernal or Convolution matrix for Identity Filter
 
     kernal = np.array(([0, 0, 0],
-                       [0, 1, 0], 
+                       [0, 1, 0],
                        [0, 0, 0]), np.float32)
-    '''
-    '''
+
     # Kernal or Convolution matrix for Edge Detection
 
     kernal = np.array(([-1, -1, -1],
