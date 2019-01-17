@@ -19,7 +19,7 @@ def main():
 
     # Histogram using Numpy
     plt.subplot(3, 1, 2)
-    histogram, bins = np.histogram(image.ravel(), 256, [0, 255])
+    histogram, _ = np.histogram(image.ravel(), 256, [0, 255])
     plt.plot(histogram, color='r')
     plt.xlim([0, 255])
     plt.title("Image Histogram using Numpy")
