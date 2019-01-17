@@ -18,7 +18,7 @@ def main():
     dilated_image = cv2.dilate(thresh, kernal, iterations=2)
 
     # finding all contours in fuzzy image
-    _, contours, hierarchy = cv2.findContours(dilated_image, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    _, contours, _ = cv2.findContours(dilated_image, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 
     # new image to draw contour objects
     sample = np.zeros((image.shape[0], image.shape[1], 3), np.uint8)
