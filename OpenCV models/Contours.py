@@ -9,7 +9,7 @@ def main():
 
     binay_thresh = cv2.adaptiveThreshold(gray_image, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 115, 1)
 
-    _, contours, hierarchy = cv2.findContours(binay_thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    _, contours, _ = cv2.findContours(binay_thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
     cv2.drawContours(image, contours, -1, (0, 255, 0), 3)
 
     new_image = np.zeros((image.shape[0], image.shape[1], 3), np.uint8)
