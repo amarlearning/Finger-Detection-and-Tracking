@@ -9,7 +9,7 @@ def main():
 
     image = cv2.imread(imagePath, 1)
     image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-    rows, columns, channels = image.shape
+    rows, columns, _ = image.shape
 
     shiftedImage = cv2.warpAffine(image, shifting, (rows, columns))
 
