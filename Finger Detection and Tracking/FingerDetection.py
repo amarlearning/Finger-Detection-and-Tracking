@@ -19,8 +19,8 @@ def rescale_frame(frame, wpercent=130, hpercent=130):
 
 def contours(hist_mask_image):
     gray_hist_mask_image = cv2.cvtColor(hist_mask_image, cv2.COLOR_BGR2GRAY)
-    ret, thresh = cv2.threshold(gray_hist_mask_image, 0, 255, 0)
-    _, cont, hierarchy = cv2.findContours(thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    _, thresh = cv2.threshold(gray_hist_mask_image, 0, 255, 0)
+    _, cont, _ = cv2.findContours(thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
     return cont
 
 
@@ -28,7 +28,7 @@ def max_contour(contour_list):
     max_i = 0
     max_area = 0
 
-    for i in range(len(contour_list)):
+    for i, _ in enumerate(contour_list):
         cnt = contour_list[i]
 
         area_cnt = cv2.contourArea(cnt)
