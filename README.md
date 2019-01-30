@@ -14,6 +14,10 @@
 ## Demo
 [![Demo GitHub Sectory](https://cdn-images-1.medium.com/max/1040/1*ngmwjSu1gt4mmqhm9JJcpg.jpeg)](https://www.youtube.com/watch?v=P3dUePye_-k)
 
+## Stargazers over time
+
+[![Stargazers over time](https://starcharts.herokuapp.com/amarlearning/Finger-Detection-and-Tracking.svg)](https://starcharts.herokuapp.com/amarlearning/Finger-Detection-and-Tracking)
+
 ## Issues
 
 You can report the bugs at the [issue tracker](https://github.com/amarlearning/opencv/issues)
