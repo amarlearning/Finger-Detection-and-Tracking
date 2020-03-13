@@ -37,7 +37,7 @@ def max_contour(contour_list):
             max_area = area_cnt
             max_i = i
 
-        return contour_list[max_i]
+    return contour_list[max_i]
 
 
 def draw_rect(frame):
