@@ -23,23 +23,6 @@ def contours(hist_mask_image):
     _, cont, hierarchy = cv2.findContours(thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
     return cont
 
-
-def max_contour(contour_list):
-    max_i = 0
-    max_area = 0
-
-    for i in range(len(contour_list)):
-        cnt = contour_list[i]
-
-        area_cnt = cv2.contourArea(cnt)
-
-        if area_cnt > max_area:
-            max_area = area_cnt
-            max_i = i
-
-    return contour_list[max_i]
-
-
 def draw_rect(frame):
     rows, cols, _ = frame.shape
     global total_rectangle, hand_rect_one_x, hand_rect_one_y, hand_rect_two_x, hand_rect_two_y
@@ -139,7 +122,7 @@ def manage_image_opr(frame, hand_hist):
     hist_mask_image = cv2.dilate(hist_mask_image, None, iterations=2)
 
     contour_list = contours(hist_mask_image)
-    max_cont = max_contour(contour_list)
+    max_cont = max(contour_list, key=cv2.contourArea)
 
     cnt_centroid = centroid(max_cont)
     cv2.circle(frame, cnt_centroid, 5, [255, 0, 255], -1)
