@@ -79,6 +79,7 @@ def hand_histogram(frame):
 
 def hist_masking(frame, hist):
     hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
+
     dst = cv2.calcBackProject([hsv], [0, 1], hist, [0, 180, 0, 256], 1)
 
     disc = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (31, 31))
@@ -133,6 +134,10 @@ def draw_circles(frame, traverse_point):
 
 def manage_image_opr(frame, hand_hist):
     hist_mask_image = hist_masking(frame, hand_hist)
+
+    hist_mask_image = cv2.erode(hist_mask_image, None, iterations=2)
+    hist_mask_image = cv2.dilate(hist_mask_image, None, iterations=2)
+
     contour_list = contours(hist_mask_image)
     max_cont = max_contour(contour_list)
 
