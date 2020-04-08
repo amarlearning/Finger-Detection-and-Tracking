@@ -54,9 +54,9 @@ def main():
 
             c = max(contours, key=cv2.contourArea)
 
-            M = cv2.moments(c)
+            moment = cv2.moments(c)
             ((x, y), radius) = cv2.minEnclosingCircle(c)
-            center = (int(M["m10"] / M["m00"]), int(M["m01"] / M["m00"]))
+            center = (int(moment["m10"] / moment["m00"]), int(moment["m01"] / moment["m00"]))
 
             if radius > 0.5:
                 cv2.circle(frame_bgr, (int(x), int(y)), int(radius), (0, 255, 255), 2)
