@@ -150,6 +150,7 @@ def main():
     while capture.isOpened():
         pressed_key = cv2.waitKey(1)
         _, frame = capture.read()
+        frame = cv2.flip(frame, 1)
 
         if pressed_key & 0xFF == ord('z'):
             is_hand_hist_created = True
