@@ -9,6 +9,15 @@
 ## Tutorial
 [Finger Detection and Tracking using OpenCV and Python](https://dev.to/amarlearning/finger-detection-and-tracking-using-opencv-and-python-586m)
 
+## How to run the code
+Go to the Finger Detection and Tracking directory.
+Then, 
+
+1. Run the code with command `python FingerDetection.py`
+2. Put your parm over the green squares
+3. Then, press `z` key to start tracking
+4. Finish program with `Esc` key.
+
 ## Demo
 [![Demo GitHub Sectory](https://cdn-images-1.medium.com/max/1040/1*ngmwjSu1gt4mmqhm9JJcpg.jpeg)](https://www.youtube.com/watch?v=P3dUePye_-k)
 
