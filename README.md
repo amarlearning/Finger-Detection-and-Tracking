@@ -6,7 +6,7 @@
 Tracking the movement of a finger is an important feature of many computer vision applications. In this application, A histogram based approach is used to separate out the hand from the background frame. Thresholding and Filtering techniques are used for background cancellation to obtain optimum results.
 
 ## Tutorial
-[Finger Detection and Tracking using OpenCV and Python](https://dev.to/amarlearning/finger-detection-and-tracking-using-opencv-and-python-586m)
+[Finger Detection and Tracking using OpenCV and Python](https://www.amarpandey.me/blog/finger-detection-and-tracking-using-opencv-and-python)
 
 [![Buy me a coffee][buymeacoffee-shield]][buymeacoffee]
 
