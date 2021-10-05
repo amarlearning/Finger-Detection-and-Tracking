@@ -24,7 +24,8 @@ Then,
 
 ## Stargazers over time
 
-[![Stargazers over time](https://starcharts.herokuapp.com/amarlearning/Finger-Detection-and-Tracking.svg)](https://starcharts.herokuapp.com/amarlearning/Finger-Detection-and-Tracking)
+[![Stargazers over time](https://starchart.cc/amarlearning/Finger-Detection-and-Tracking.svg)](https://starchart.cc/amarlearning/Finger-Detection-and-Tracking)
+
 
 ## Issues
 
