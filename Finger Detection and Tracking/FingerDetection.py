@@ -20,7 +20,7 @@ def rescale_frame(frame, wpercent=130, hpercent=130):
 def contours(hist_mask_image):
     gray_hist_mask_image = cv2.cvtColor(hist_mask_image, cv2.COLOR_BGR2GRAY)
     ret, thresh = cv2.threshold(gray_hist_mask_image, 0, 255, 0)
-    _, cont, hierarchy = cv2.findContours(thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    cont, hierarchy = cv2.findContours(thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
     return cont
 
 def draw_rect(frame):
@@ -92,8 +92,8 @@ def farthest_point(defects, contour, centroid):
         s = defects[:, 0][:, 0]
         cx, cy = centroid
 
-        x = np.array(contour[s][:, 0][:, 0], dtype=np.float)
-        y = np.array(contour[s][:, 0][:, 1], dtype=np.float)
+        x = np.array(contour[s][:, 0][:, 0], dtype=np.float64)
+        y = np.array(contour[s][:, 0][:, 1], dtype=np.float64)
 
         xp = cv2.pow(cv2.subtract(x, cx), 2)
         yp = cv2.pow(cv2.subtract(y, cy), 2)
