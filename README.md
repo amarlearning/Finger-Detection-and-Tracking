@@ -11,10 +11,16 @@ Tracking the movement of a finger is an important feature of many computer visio
 Go to the Finger Detection and Tracking directory.
 Then, 
 
-1. Run the code with command `python FingerDetection.py`
-2. Put your parm over the green squares
-3. Then, press `z` key to start tracking
-4. Finish program with `Esc` key.
+1. Install the dependencies
+    ```shell
+    pip install pipenv
+    pipenv shell
+    pipenv install
+    ```
+2. Run the code with command `cd "Finger Detection and Tracking" &&  python FingerDetection.py`
+3. Put your parm over the green squares
+4. Then, press `z` key to start tracking
+5. Finish program with `Esc` key.
 
 ## Demo
 [![Demo GitHub Sectory](https://cdn-images-1.medium.com/max/1040/1*ngmwjSu1gt4mmqhm9JJcpg.jpeg)](https://www.youtube.com/watch?v=P3dUePye_-k)
